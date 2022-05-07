@@ -1,0 +1,90 @@
+.main-wrapper {
+    border: solid 1px gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f5f5f5;
+    width: 400px;
+}
+
+.menu {
+    display: flex;
+    margin: 10px 0 20px 0;
+}
+
+.wrapper-checkbox-mode {
+    display: flex;
+}
+
+#input-name-tag {
+    padding: 5px 10px;
+    border: solid 1px gray;
+    border-radius: 6px;
+}
+
+#button-add-tag {
+    margin: 0 5px;
+    height: 27px;
+    border-radius: 7px;
+    border: solid 1px gray;
+}
+
+.wrapper-checkbox-mode {
+    margin-left: 45px;
+}
+
+.checkbox-mode-description {
+    margin: 0;
+}
+
+.checkbox-mode-description {
+    height: 27px;
+    line-height: 27px;
+    margin-left: 5px;
+}
+
+.checkbox-mode {
+    height: 21px;
+    cursor: pointer;
+}
+
+.tag-name {
+    padding: 0 5px;
+    font-size: 17px;
+   /* width: 300px;*/
+}
+
+.tag-item {
+    display: flex;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #88be32;
+}
+
+.tag-item.checked {
+    opacity: .2;
+    background-color: #88be32;
+}
+
+.btn-delete {
+    cursor: pointer;
+    color: #3b5900;
+    border: none;
+    font-size: 13px;
+    background-color: rgba(136, 190, 50, 0);;
+}
+
+#list-tags {
+    border: solid 1px gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.checkbox-completed {
+    cursor: pointer;
+}
