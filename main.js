@@ -1,6 +1,7 @@
 const inpNameTag = document.getElementById('input-name-tag');
 const btnAddNameTag = document.getElementById('button-add-tag');
 const listTags = document.getElementById('list-tags');
+const checkView = document.getElementById('box-mode');
 
 let tags;
 !localStorage.tags ? tags = [] : tags = JSON.parse(localStorage.getItem('tags'));
@@ -11,7 +12,6 @@ function Tag(description) {
     this.description = description;
     this.completed = false;
 }
-
 
 const createTemplate = (tag, index) => {
     return `
@@ -26,7 +26,6 @@ const createTemplate = (tag, index) => {
 </div>`
 
 }
-
 
 const updateTagList = () => {
     listTags.innerHTML = '';
@@ -44,19 +43,16 @@ const updateLocalStorage = () => {
     localStorage.setItem('tags', JSON.stringify(tags));
 }
 
-
 const changeTag = (index) => {
     tags[index].completed = !tags[index].completed;
     if (tags[index].completed) {
         tagItems[index].classList.add('checked');
-    }
-    else {
+    } else {
         tagItems[index].classList.remove('checked');
     }
     updateLocalStorage();
     updateTagList();
 }
-
 
 btnAddNameTag.addEventListener('click', () => {
     tags.push(new Tag(inpNameTag.value));
@@ -65,10 +61,14 @@ btnAddNameTag.addEventListener('click', () => {
     inpNameTag.value = '';
 });
 
-
-
 const deleteTag = (index) => {
     tags.splice(index, 1);
     updateLocalStorage();
     updateTagList();
+}
+
+const blockListTags = document.getElementById('list-tags');
+
+const changeViewMode = () => {
+    checkView.checked ? blockListTags.classList.add("disabledTagList") : blockListTags.classList.remove("disabledTagList");
 }

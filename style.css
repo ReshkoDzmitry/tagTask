@@ -88,3 +88,9 @@
 .checkbox-completed {
     cursor: pointer;
 }
+
+
+.disabledTagList {
+    pointer-events: none;
+    opacity: 0.7;
+}
