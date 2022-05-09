@@ -1,7 +1,8 @@
-const inpNameTag = document.getElementById('input-name-tag');
-const btnAddNameTag = document.getElementById('button-add-tag');
-const listTags = document.getElementById('list-tags');
-const checkView = document.getElementById('box-mode');
+const inpNameTag = document.getElementById('inputNameTag');
+const btnAddNameTag = document.getElementById('buttonAddTag');
+const checkView = document.getElementById('boxMode');
+const listTags = document.getElementById('listTags');
+
 
 let tags;
 !localStorage.tags ? tags = [] : tags = JSON.parse(localStorage.getItem('tags'));
@@ -17,14 +18,13 @@ const createTemplate = (tag, index) => {
     return `
 <div>
 <div class="tag-item ${tag.completed ? 'checked' : ''}">
-            <input class='checkbox-completed' onclick='changeTag(${index})' type='checkbox' ${tag.completed ? 'checked' : ''}>
-            <div class='tag-name'>${tag.description}</div>
+            <input class='tag-item__checkbox-completed' onclick='changeTag(${index})' type='checkbox' ${tag.completed ? 'checked' : ''}>
+            <div class='tag-item__div-tag-name'>${tag.description}</div>
             <div class='tag-control'> 
-                <button class='btn-delete' onclick="deleteTag(${index})">x</button>
+                <button class='tag-control__btn-delete' onclick="deleteTag(${index})">x</button>
             </div>
         </div>
 </div>`
-
 }
 
 const updateTagList = () => {
@@ -39,6 +39,11 @@ const updateTagList = () => {
 
 updateTagList();
 
+const allFunctions = () => {
+    updateLocalStorage();
+    updateTagList();
+}
+
 const updateLocalStorage = () => {
     localStorage.setItem('tags', JSON.stringify(tags));
 }
@@ -50,25 +55,22 @@ const changeTag = (index) => {
     } else {
         tagItems[index].classList.remove('checked');
     }
-    updateLocalStorage();
-    updateTagList();
+    allFunctions();
 }
 
 btnAddNameTag.addEventListener('click', () => {
     tags.push(new Tag(inpNameTag.value));
-    updateLocalStorage();
-    updateTagList();
+    allFunctions();
     inpNameTag.value = '';
 });
 
 const deleteTag = (index) => {
     tags.splice(index, 1);
-    updateLocalStorage();
-    updateTagList();
+    allFunctions();
 }
 
-const blockListTags = document.getElementById('list-tags');
-
 const changeViewMode = () => {
-    checkView.checked ? blockListTags.classList.add("disabledTagList") : blockListTags.classList.remove("disabledTagList");
+    checkView.checked ? listTags.classList.add("list-tags_disabled") : listTags.classList.remove("list-tags_disabled");
+    checkView.checked ? inpNameTag.setAttribute('disabled', 'true') : inpNameTag.removeAttribute('disabled');
+    checkView.checked ? btnAddNameTag.setAttribute('disabled', 'true') : btnAddNameTag.removeAttribute('disabled');
 }

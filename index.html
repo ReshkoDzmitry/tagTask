@@ -11,18 +11,18 @@
 <body>
 <div class="main-wrapper">
     <div class="menu">
-        <div class="wrapper-input-name-tag">
-            <input id="input-name-tag" type="text" placeholder="enter tag name">
+        <div class="menu__wrapper-input-name-tag">
+            <input class="menu__input-name-tag" id="inputNameTag" type="text" placeholder="enter tag name">
         </div>
-        <div class="wrapper-button-add-tag">
-            <button id="button-add-tag" >Add</button>
+        <div class="menu__wrapper-button-add-tag">
+            <button class="menu__button-add-tag" id="buttonAddTag">Add</button>
         </div>
-        <div class="wrapper-checkbox-mode">
-            <input class="checkbox-mode" id="box-mode" type="checkbox" onclick=changeViewMode()>
-            <label class="checkbox-mode-description" for="box-mode">View mode</label>
+        <div class="menu__wrapper-checkbox-mode">
+            <input class="menu__checkbox-mode" id="boxMode" type="checkbox" onclick=changeViewMode()>
+            <label class="menu__checkbox-mode-description" for="boxMode">View mode</label>
         </div>
     </div>
-    <div id="list-tags">
+    <div class="list-tags" id="listTags">
     </div>
 </div>
 <script src="main.js"></script>
